@@ -1,4 +1,4 @@
-" sets settings
+
 filetype plugin indent on
 set nocompatible
 set autowrite
@@ -76,9 +76,14 @@ Plug 'preservim/nerdtree'
 Plug 'vimwiki/vimwiki'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-surround'
+Plug 'stevearc/vim-arduino'
 Plug 'voldikss/vim-floaterm'
 Plug 'https://github.com/preservim/tagbar.git'
 Plug 'puremourning/vimspector'
+Plug 'junegunn/fzf'
+Plug 'w0rp/ale'
+Plug 'jiangmiao/auto-pairs'
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 " use gruvbox for vim theme
@@ -113,3 +118,27 @@ nnoremap <F10> :call vimspector#StepInto()<CR>
 nnoremap <F11> :call vimspector#StepOut()<CR>
 nnoremap <nowait> <F9> :call vimspector#ToggleBreakpoint()<CR>
 nnoremap <F9><F9> :call vimspector#ClearBreakpoints()<CR>
+
+
+
+
+" arduino Keybindings
+
+"
+" Change these as desired
+nnoremap <buffer> <leader>aa <cmd>ArduinoAttach<CR>
+nnoremap <buffer> <leader>ac <cmd>ArduinoVerify<CR>
+nnoremap <buffer> <leader>au <cmd>ArduinoUpload<CR>
+nnoremap <buffer> <leader>acu <cmd>ArduinoUploadAndSerial<CR>
+nnoremap <buffer> <leader>as <cmd>ArduinoSerial<CR>
+nnoremap <buffer> <leader>ab <cmd>ArduinoChooseBoard<CR>
+nnoremap <buffer> <leader>ap <cmd>ArduinoChooseProgrammer<CR>
+
+
+
+" setting for vim arduino
+let g:arduino_build_path = "{project_dir}/build"
+let g:arduino_board = 'arduino:avr:mega'
+let g:arduino_serial_port = '/dev/ttyUSB0'
+let g:arduino_serial_baud = 9600
+let g:arduino_serial_cmd = 'screen {port} {baud}'
