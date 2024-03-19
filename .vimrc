@@ -1,4 +1,3 @@
-
 filetype plugin indent on
 set nocompatible
 set autowrite
@@ -29,6 +28,8 @@ set guicursor+=a:blinkon0
 set guifont=Fira\ Code\ 12
 set laststatus=2
 set path+=**
+set termguicolors
+
 " remap keys
 nmap <F8> :TagbarToggle<CR>
 imap jj <ESC>
@@ -42,6 +43,9 @@ nnoremap <leader>s <Plug>(easymotion-bd-w)
 nnoremap <leader>j <Plug>(easymotion-bd-jk)
 map <C-h> <C-w>h
 map <C-j> <C-w>j
+map <C-l> <C-w>l
+map <C-k> <C-w>k
+
 
 "Keybindings for tab navigation with leader and number
 noremap <leader>1 1gt
@@ -81,32 +85,57 @@ Plug 'voldikss/vim-floaterm'
 Plug 'https://github.com/preservim/tagbar.git'
 Plug 'puremourning/vimspector'
 Plug 'junegunn/fzf'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'jiangmiao/auto-pairs'
+Plug 'rust-lang/rust.vim'
 Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 " use gruvbox for vim theme
+let g:gruvbox_contrast_dark = 'hard'
+
 autocmd vimenter * ++nested colorscheme gruvbox
-" Exit Vim if NERDTree is the only window remaining in the only tab.
-inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
-" use <tab> to trigger completion and navigate to the next complete item
+" coc config 
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" Use K to show documentation in preview window
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
 function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-inoremap <silent><expr> <Tab>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr><s-tab> coc#pum#visible() ? coc#pum#prev(1) : "\<c-h>"
+
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
 
 
-" format pythn files on save
+" format files on save
 aug c 
   au!
-  au BufWrite *.c call CocAction('format')
+  au BufWrite *.c call CocActionAsync('format')
+  au BufWrite *.rs call CocActionAsync('format')
 aug END
 autocmd filetype c nnoremap <leader>cf :!gcc % -ggdb -o %:r <CR><CR>
 "au FileType c set makeprg=gcc\ -g\ -o\ %:r\ %\ <CR>\ <CR>
@@ -142,3 +171,10 @@ let g:arduino_board = 'arduino:avr:mega'
 let g:arduino_serial_port = '/dev/ttyUSB0'
 let g:arduino_serial_baud = 9600
 let g:arduino_serial_cmd = 'screen {port} {baud}'
+
+" Rust Keybindings
+nnoremap <buffer> <leader>rr <cmd>RustRun<CR>
+
+" ale config 
+let g:ale_completion_enabled=1
+
