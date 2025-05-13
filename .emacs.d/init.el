@@ -1,25 +1,48 @@
+;; set emacs init file
 (setq user-init-file "~/.emacs.d/init.el")
 
 ;; hide splash screen 
 (setq inhibit-splash-screen t)
+
+;; set custom file for customization 
+(setq custom-file "~/.emacs.d/custom-file.el")
+(load custom-file)
+
 (global-auto-revert-mode t)
+
+;; set font 
 (set-face-attribute 'default nil :font "Cousine-18");
 
+;; fullscreen on start 
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+;; remove some gui stuff
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (setq use-file-dialog nil)
 (blink-cursor-mode -1)
 (setq visible-bell 1)
-(show-paren-mode 1)
-(global-hl-line-mode 1)
-(eldoc-mode 1)
-(fset 'yes-or-no-p 'y-or-n-p)
 (setq ring-bell-function 'ignore)
 
+;; adding line numbers 
+(global-display-line-numbers-mode)
+
+
+;; load theme 
+(load-theme 'gruber-darker)
+
+;; show matching parentecies 
 (electric-pair-mode)
+(show-paren-mode 1)
 
+;; show document on little buffer down there 
+(eldoc-mode 1)
 
+;; change yes and no to y and n
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;; add repos 
 (setq package-archives
 	  '(("GNU ELPA"     . "https://elpa.gnu.org/packages/")
 		("MELPA"        . "https://melpa.org/packages/")
@@ -35,46 +58,17 @@
 
 (package-initialize)
 
+;; enable ido mode 
+(ido-mode 1)
+(ido-everywhere 1)
 
-;; Enable Vertico.
-(use-package vertico
-  ;; (vertico-scroll-margin 0) ;; Different scroll margin
-  ;; (vertico-count 20) ;; Show more candidates
-  ;; (vertico-resize t) ;; Grow and shrink the Vertico minibuffer
-  ;; (vertico-cycle t) ;; Enable cycling for `vertico-next/previous'
-  :init
-  (vertico-mode))
-
-;; Persist history over Emacs restarts. Vertico sorts by history position.
-(use-package savehist
-  :init
-  (savehist-mode))
-
-;; Emacs minibuffer configurations.
-(use-package emacs
-  :custom
-  ;; Support opening new minibuffers from inside existing minibuffers.
-  (enable-recursive-minibuffers t)
-  ;; Hide commands in M-x which do not work in the current mode.  Vertico
-  ;; commands are hidden in normal buffers. This setting is useful beyond
-  ;; Vertico.
-  (read-extended-command-predicate #'command-completion-default-include-p)
-  ;; Do not allow the cursor in the minibuffer prompt
-  (minibuffer-prompt-properties
-   '(read-only t cursor-intangible t face minibuffer-prompt)))
-
-;; Optionally use the `orderless' completion style.
-(use-package orderless
-  :custom
-  ;; Configure a custom style dispatcher (see the Consult wiki)
-  ;; (orderless-style-dispatchers '(+orderless-consult-dispatch orderless-affix-dispatch))
-  ;; (orderless-component-separator #'orderless-escapable-split-on-space)
-  (completion-styles '(orderless basic))
-  (completion-category-defaults nil)
-  (completion-category-overrides '((file (styles partial-completion)))))
+;; enable smex for Meta-x menu to use ido 
+(require 'smex)
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
 
 
-
+;; company auto complition
 (use-package company
   :ensure t
   :init
@@ -84,34 +78,12 @@
   (setq company-idle-delay 0.1)
   (setq company-minimum-prefix-length 1)
   (setq company-tooltip-align-annotations t))
-
-(use-package doom-themes
-  :ensure t
-  :preface (defvar region-fg nil) ; this prevents a weird bug with doom themes
-  :init (load-theme 'doom-one t))
-
-
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(adwaita-dark-theme aio company doom-themes eglot-jl hotfuzz
-			marginalia orderless vertico yasnippet
-			yasnippet-snippets))
- '(warning-suppress-types '((use-package))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;; help to find out keybindings 
 (use-package which-key
   :ensure t
   :config
   (which-key-mode))
+
 (use-package marginalia
   :ensure t
   :hook (after-init . marginalia-mode))

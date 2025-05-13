@@ -1,0 +1,43 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/UG/programming/" . "magic_ruin/")
+ ("/home/UG/" . "programming/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/UG/programming/"
+ "/home/UG/programming/java_test/"
+ "/home/UG/.emacs.d/"
+ "/home/UG/Downloads/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "init.el"
+ "1_17582041961.java"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/UG/programming/java_test/" (26658 21945 625941 340000) "me.java" ".#me.java" "../" "./" "#me.java#")
+
+ ("/home/UG/.emacs.d/" (26658 21140 814997 478000) "recentf" "smex-items" "custom-file.el" "elpa/" "init.el" "../" "history" "./" "eln-cache/" "ido.last" "init.el~" "jdee_server/" "snippets/" "eshell/" "tutorial/" "custom-file.el~" "auto-save-list/")
+
+ ("/home/" (26540 30450 425622 240000) "../" "./" "lost+found/" "UG/")
+
+ ("/home/UG/programming/magic_ruin/" (26653 58053 88070 973000) "texture/" "#main.c#" "a.out" "gl.o" "render_init.o" "engine/" "time.o" "../" "./" "assets/" "dynamic_array.o" "main.o" "build.sh" "physics.o" "main.c" ".git/" "shaders/" "render_util.o" "render.o" ".gitignore" "main.out" "io.o")
+
+ ("/home/UG/programming/manga_reader/" (26598 49371 7280 665000) "../" "./" "main" "build.sh" "main.c")
+
+ ("/home/UG/programming/" (26657 64511 148543 609000) "magic_ruin/" "leetcode_practice/" "java_test/" "../" "./" "manga_reader/" "server/")
+
+ ("/home/UG/" (26658 17181 60273 684000) "Documents/" ".bash_history" "vimwiki/" "programming/" ".steampath" "Music/" ".zshrc" "#.emacs#" ".zsh_history" ".oh-my-zsh/" ".shell.pre-oh-my-zsh" "IdeaProjects/" ".eclipse/" ".arduinoIDE/" ".gtkrc-2.0" ".lesshst" ".mozilla/" ".gnupg/" ".icons/" "#mine#" ".xsession-errors.old" "mine" "repos/" ".bashrc" ".themes/" ".vim/" "../" ".dmrc" ".local/" "./" "ja-netfilter/" ".gitconfig" "Pictures/" ".npm/" ".xinitrc" "mine.c" "Downloads/" "Videos/" ".steampid" ".ipython/" ".bash_logout" ".viminfo" ".cache/" ".m2/" ".vimrc" ".config/" "mine.c~" ".jupyter/" ".z" ".xsession-errors" ".zcompdump-Mine-5.9" "Arduino/" "Desktop/" ".pulse-cookie" ".zcompdump-Mine-5.9.zwc" ".java/" "Mine/" ".Xauthority" "Public/" ".pki/" ".fehbg" "Templates/" ".bash_profile" ".emacs.d/" "gittoken" ".arduino15/")
+
+ ("/home/UG/Downloads/" (26657 57162 443056 206000) "Westworld.S01E01.720p.BluRay.x265.10bit.SoftSub.DonyayeSerial.mkv" "Core Java SE 9 for the Impatient 2nd ed - 2018.pdf" "87550038-960.png" "docs/" "jozavat-omomi873294043/" "0a-esp8266ex_datasheet_en.pdf" "questions.jpg" "NES RPG Wizard Free Files.zip" "حل المسائل اقتصاد مهندسی/" "oblivion-desktop-linux-x64/" "mizan/" "Untitled form (Responses) - Form Responses 1.pdf" "Legacies.S04E01.720p.x265.10bit.Web-DL.SoftSub.PSA.DonyayeSerial.mkv" "README.md" "mizan.zip" "player.png" "omomi30853566844.zip" "../" "./" "jozavat-omomi873294043.zip" "elements slimes wizards.png" "2600-0.txt" "mine.txt" "Objects First with Java.pdf" "Dark_Wizard_Distributable.aseprite" "NES RPG Wizard Free Files/" "Wizard Pack/" "lscp-0.5-fa-en.7z" "LICENSE" "The ANSI C Programming Language.pdf" "collect_Optional_MethodReference.pdf" "Core Java SE 9 for the Impatient 2nd ed - 2018 (1).pdf" "ideaIU-2024.3.3.tar.gz" "jdk-8u441-docs-all.zip" "bg,jpg" "oblivion-desktop-linux-x64.tar.xz" "Adwaitaru.zip" "idea-IU-243.24978.46/" ".~lock.lscp-0.5-fa-en.txt#" "faragir-soal83929405674/" "Wizard Pack.zip" "WorksheetWorks_Cursive_Handwriting_Practice_1.pdf" "Wizard/" "arduino-ide_2.3.6_Linux_64bit.zip" "faragir-soal83929405674.zip" "Functional_Interface_2_final.pdf" "lscp-0.5-fa-en.txt" "bargh-ghodrat6204207575.zip" "bargh-ghodrat6204207575/" "Functional_Interface_1.pptx" "INSTALL" "arduino-ide_2.3.6_Linux_64bit/" "AUTHORS" "Wizard Idle.aseprite" "Legacies.S04E04.720p.x265.10bit.Web-DL.SoftSub.PSA.DonyayeSerial.mkv" "Wizard.rar" "ja-netfilter-202x.zip" "Modern Java Recipes; Simple Solutions to Difficult Problems in Java 8 and 9, B074R6B13N, B074R6B13N, 2017, by  Ken Kousen.pdf" "Objects First with Java (1).pdf" "Legacies.S04E03.720p.x265.10bit.Web-DL.SoftSub.PSA.DonyayeSerial.mkv" "Westworld.S01E02.720p.BluRay.x265.10bit.SoftSub.DonyayeSerial.mkv" "زهرا آهنین جان ،402149010.pdf" "Telegram Desktop/" "jdk-23.0.2_doc-all.zip" "Modern Java Recipes; Simple Solutions to Difficult Problems in Java 8 and 9, B074R6B13N, B074R6B13N, 2017, by Ken Kousen.pdf" "بلیط صادر شد.pdf" "cursor/" "Snapins.ai_video_AQMHc53ugDm3oyU_wsxWGas1qXAuo-CYTaU7_Od268yjVS0lFOZhBvi2158ic7ea9ZVwWNbMk1yBSnDkpXi0F2qQ5d2eOnQoE7C84AE.mp4" "Adwaitaru/" "حل المسائل اقتصاد مهندسی (2).rar" "transformers.pdf" "omomi1743853325434.zip" "wp5318322-nerdy-desktop-wallpapers.png" "Legacies.S04E02.720p.x265.10bit.Web-DL.SoftSub.PSA.DonyayeSerial.mkv" "1_17582041961.java")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

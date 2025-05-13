@@ -1,0 +1,88 @@
+(setq user-init-file "~/.emacs.d/init.el")
+
+;; hide splash screen 
+(setq inhibit-splash-screen t)
+
+(setq custom-file "~/.emacs.d/custom-file.el")
+(load custom-file)
+(global-auto-revert-mode t)
+(set-face-attribute 'default nil :font "Cousine-18");
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(require 'smex)
+
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-display-line-numbers-mode)
+(ido-mode 1)
+(ido-everywhere 1)
+(load-theme 'gruber-darker)
+(setq use-file-dialog nil)
+(blink-cursor-mode -1)
+(setq visible-bell 1)
+(show-paren-mode 1)
+(global-hl-line-mode 1)
+(eldoc-mode 1)
+(fset 'yes-or-no-p 'y-or-n-p)
+(setq ring-bell-function 'ignore)
+
+(electric-pair-mode)
+
+
+(setq package-archives
+	  '(("GNU ELPA"     . "https://elpa.gnu.org/packages/")
+		("MELPA"        . "https://melpa.org/packages/")
+		("ORG"          . "https://orgmode.org/elpa/")
+		("MELPA Stable" . "https://stable.melpa.org/packages/")
+		("nongnu"       . "https://elpa.nongnu.org/nongnu/"))
+	  package-archive-priorities
+	  '(("GNU ELPA"     . 20)
+		("MELPA"        . 15)
+		("ORG"          . 10)
+		("MELPA Stable" . 5)
+		("nongnu"       . 0)))
+
+(package-initialize)
+
+
+;; Emacs minibuffer configurations.
+(use-package emacs
+  :custom
+  ;; Support opening new minibuffers from inside existing minibuffers.
+  (enable-recursive-minibuffers t)
+  ;; Hide commands in M-x which do not work in the current mode.  Vertico
+  ;; commands are hidden in normal buffers. This setting is useful beyond
+  ;; Vertico.
+  (read-extended-command-predicate #'command-completion-default-include-p)
+  ;; Do not allow the cursor in the minibuffer prompt
+  (minibuffer-prompt-properties
+   '(read-only t cursor-intangible t face minibuffer-prompt)))
+
+
+
+(use-package company
+  :ensure t
+  :init
+  (add-hook 'after-init-hook 'global-company-mode)
+  :config
+  (setq company-dabbrev-downcase 0)
+  (setq company-idle-delay 0.1)
+  (setq company-minimum-prefix-length 1)
+  (setq company-tooltip-align-annotations t))
+
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode))
+(use-package marginalia
+  :ensure t
+  :hook (after-init . marginalia-mode))
+
+
+

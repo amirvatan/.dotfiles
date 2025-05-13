@@ -1,0 +1,9 @@
+gcc mine.c 
+ls 
+ls 
+gcc mine.c 
+gcc mine.c 
+./a.out 
+clear 
+clear-scrollback 
+clear 
